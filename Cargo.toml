@@ -1,0 +1,32 @@
+[package]
+name = "honest_shamir"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+license = "MIT OR Apache-2.0"
+description = "Shamir secret sharing over GF(2^8) on the honest field: byte-wise split, reconstruct and refresh. Plain bytes in, plain bytes out."
+authors = ["James Hunt <james@1o.business>"]
+repository = "https://github.com/jameshuntt/honest_shamir"
+readme = "README.md"
+keywords = ["shamir", "secret-sharing", "threshold", "gf256", "no-std"]
+categories = ["cryptography", "no-std"]
+include = ["src/**", "tests/**", "examples/**", "Cargo.toml", "README.md", "LICENSE-MIT", "LICENSE-APACHE"]
+
+[features]
+default = ["std", "os-rng"]
+# `std::error::Error` for `ShamirError`.
+std = []
+# `split` and `refresh` without passing a generator: the operating system's.
+os-rng = ["rand_core/os_rng"]
+
+[dependencies]
+honest = { version = "0.2.0", path = "../honest", default-features = false }
+rand_core = "0.9"
+zeroize = "1.8"
+
+[dev-dependencies]
+rand_chacha = "0.9"
+
+[[example]]
+name = "split"
+required-features = ["os-rng"]
