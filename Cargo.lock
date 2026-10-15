@@ -22,14 +22,14 @@ dependencies = [
 
 [[package]]
 name = "honest"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "zeroize",
 ]
 
 [[package]]
 name = "honest_shamir"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "honest",
  "rand_chacha",
